@@ -5,7 +5,7 @@ class NotesController < ApplicationController
     end
 
     def show
-        note = Note.find_by(params[:id])
+        note = Note.find_by(id: params[:id])
         render json: note
     end
 
@@ -21,7 +21,9 @@ class NotesController < ApplicationController
     end
 
     def delete 
-
+        note = Note.find_by(id: params[:id])
+        note.destroy
+        render json: { message: "Sucessfully deleted note." }
     end
 
     private
