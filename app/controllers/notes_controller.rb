@@ -11,11 +11,12 @@ class NotesController < ApplicationController
 
     def create 
         # user = User.find_or_create_by(username: userParams)
+        
         note = Note.new(user_id: note_params[:user_id], content: note_params[:content])
         if note.save
             render json: note
         else  
-            render json: { error: "Username or Email already exists" }
+            render json: { error: "There was an error" }
         end
     end
 
